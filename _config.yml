@@ -1,0 +1,31 @@
+title: Dread Game Gallery
+description: >- # this means to ignore newlines until "baseurl:"
+  On this site collected all my screenshots from games.
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+themecolor: '#202225'
+lang: ru
+
+slider-title: Погружайся в мир <span class="slider__stroke">игыр</span> и
+first-li: <span class="slider__stroke">наслаждайся</span> им
+second-li: <span class="slider__stroke">открывай</span> новое
+third-li: <span class="slider__stroke">удивляйся</span> ему
+fourth-li: <span class="slider__stroke">получай</span> эмоции
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

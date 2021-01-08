@@ -1,0 +1,8 @@
+<div class="filter">
+	<div class="container">
+		<button id="all-cards" class="filter__btn">Все</button>
+		{% for tag in site.tags %}
+  		<button class="filter__btn">{{ tag[0] }}</button>
+		{% endfor %}
+	</div>
+</div>

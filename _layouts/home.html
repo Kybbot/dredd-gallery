@@ -1,0 +1,31 @@
+{% include /head.html %}
+
+{% include /preloader.html %}
+
+{% include /lines.html %}
+
+{% include /slider.html %}
+
+{% include /search.html %}
+
+{% include /filter.html %}
+
+<main class="main">
+	<div class="container">
+		<div class="row">
+
+			{% for post in site.posts %}
+				{% include card.html %}
+			{% endfor %}
+
+		</div>
+	</div>
+</main>
+
+{% include /footer.html %}
+
+<script defer src="/assets/js/vanilla-tilt.min.js"></script>
+<script defer src="/assets/js/main.js"></script>
+
+</body>
+</html>
