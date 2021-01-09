@@ -1,4 +1,4 @@
-title: Dread Game Gallery
+title: Dredd Game Gallery
 description: >- # this means to ignore newlines until "baseurl:"
   On this site collected all my screenshots from games.
 baseurl: "/" # the subpath of your site, e.g. /blog
@@ -6,7 +6,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 themecolor: '#202225'
 lang: ru
 
-slider-title: Погружайся в мир <span class="slider__stroke">игыр</span> и
+slider-title: Погружайся в мир <span class="slider__stroke">игр</span> и
 first-li: <span class="slider__stroke">наслаждайся</span> им
 second-li: <span class="slider__stroke">открывай</span> новое
 third-li: <span class="slider__stroke">удивляйся</span> ему
