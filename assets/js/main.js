@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
 	setTimeout(function(){
 		const preloader = document.querySelector('.preloader');
@@ -7,6 +7,36 @@ window.addEventListener('load', () => {
 			preloader.classList.add('preloader_finish');
 		}
 	}, 1000);
+
+	const images = document.querySelectorAll('.card__photo');
+
+	function preloadImage(img) {
+		const src = img.getAttribute('data-src');
+		if(!src) return;
+
+		img.src = src;
+	}
+
+	const imgOptions = {
+		root: null,
+		rootMargin: '0px',
+		treshold: 1.0,
+	};
+
+	const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) {
+				return;
+			} else {
+				preloadImage(entry.target);
+				imgObserver.unobserve(entry.target);
+			}
+		});
+	}, imgOptions);
+
+	images.forEach(image => {
+		imgObserver.observe(image);
+	});
 
 	VanillaTilt.init(document.querySelectorAll(".card"), {
 		max: 6,

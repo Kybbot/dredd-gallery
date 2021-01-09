@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
 	setTimeout(function(){
 		const preloader = document.querySelector('.preloader');
@@ -7,6 +7,36 @@ window.addEventListener('load', () => {
 			preloader.classList.add('preloader_finish');
 		}
 	}, 1000);
+
+	const images = document.querySelectorAll('.gallery__photo');
+
+	function preloadImage(img) {
+		const src = img.getAttribute('data-src');
+		if(!src) return;
+
+		img.src = src;
+	}
+
+	const imgOptions = {
+		root: null,
+		rootMargin: '0px',
+		treshold: 1.0,
+	};
+
+	const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) {
+				return;
+			} else {
+				preloadImage(entry.target);
+				imgObserver.unobserve(entry.target);
+			}
+		});
+	}, imgOptions);
+
+	images.forEach(image => {
+		imgObserver.observe(image);
+	});
 
 	const toTop = document.querySelector('.footer__btn');
 
@@ -25,7 +55,7 @@ window.addEventListener('load', () => {
 		photo.addEventListener('click', () => {
 			currentPhoto = photo;
 
-			modalImg.src = currentPhoto.src;
+			modalImg.src = currentPhoto.getAttribute('data-src');
 			modalImg.style.cursor = 'zoom-out';
 			modal.style.display = 'block';
 		});
@@ -33,12 +63,12 @@ window.addEventListener('load', () => {
 
 	next.addEventListener('click', () => {
 		if (currentPhoto.nextElementSibling) currentPhoto = currentPhoto.nextElementSibling;
-		modalImg.src = currentPhoto.src;
+		modalImg.src = currentPhoto.getAttribute('data-src');
 	});
 
 	previous.addEventListener('click', () => {
 		if (currentPhoto.previousElementSibling) currentPhoto = currentPhoto.previousElementSibling;
-		modalImg.src = currentPhoto.src;
+		modalImg.src = currentPhoto.getAttribute('data-src');
 	});
 
 	modalImg.addEventListener('click', () => {
