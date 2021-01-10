@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const imgOptions = {
 		root: null,
 		rootMargin: '0px',
-		treshold: 1.0,
+		treshold: 0.1,
 	};
 
 	const imgObserver = new IntersectionObserver((entries, imgObserver) => {
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	
 		if (result) {
-			scrollTo(result.parentElement.offsetLeft, result.parentElement.offsetTop);
+			scrollTo(result.parentElement.offsetLeft, result.parentElement.offsetTop - 20);
 			result.parentElement.classList.add('card_focus');
 		
 			setTimeout(() => {
@@ -105,6 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	tagBtns.forEach(btn => {
 		btn.addEventListener('click', () => {
+			tagBtns.forEach(btn => btn.classList.remove('filter__btn_light'));
+			btn.classList.add('filter__btn_light');
 			cards.forEach(card => {
 				if (!card.getAttribute('data-tag').includes(btn.textContent)) {
 					card.style.display = 'none';

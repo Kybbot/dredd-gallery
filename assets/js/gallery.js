@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const imgOptions = {
 		root: null,
 		rootMargin: '0px',
-		treshold: 1.0,
+		treshold: 0.1,
 	};
 
 	const imgObserver = new IntersectionObserver((entries, imgObserver) => {
