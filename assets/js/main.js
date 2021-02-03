@@ -69,7 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	const searchBtn = document.querySelector('.search__btn');
 	const searchEmpty = document.querySelector('.search__empty');
 	const cardTitles = document.querySelectorAll('.card__title');
+	let dataList = document.querySelector('#games');
 	
+	cardTitles.forEach(item => {
+		let option = document.createElement('option');
+		option.setAttribute('value', item.textContent);
+		dataList.appendChild(option);
+	});
+
 	searchBtn.addEventListener('click', (event) => {
 		event.preventDefault();
 		let result;
@@ -79,12 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	
 		if (result) {
-			scrollTo(result.parentElement.offsetLeft, result.parentElement.offsetTop - 20);
-			result.parentElement.classList.add('card_focus');
+			location = result.nextElementSibling.href;
+			// scrollTo(result.parentElement.offsetLeft, result.parentElement.offsetTop - 20);
+			// result.parentElement.classList.add('card_focus');
 		
-			setTimeout(() => {
-				result.parentElement.classList.remove('card_focus');
-			}, 3000);
+			// setTimeout(() => {
+			// 	result.parentElement.classList.remove('card_focus');
+			// }, 3000);
 		} else {
 			searchEmpty.style.opacity = '1';
 			searchEmpty.style.transform = 'scale(1)';
